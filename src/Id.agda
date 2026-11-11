@@ -5,7 +5,7 @@ open import Op using (id)
 
 open import Agda.Primitive
 
-data Id {l :Level} {A : Set l} : A -> A -> Set l where
+data Id {l : Level} {A : Set l} : A -> A -> Set l where
     refl : (x : A) -> Id x x
 
 
