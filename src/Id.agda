@@ -6,7 +6,12 @@ open import Op using (id)
 open import Agda.Primitive
 
 data Id {l : Level} {A : Set l} : A -> A -> Set l where
-    refl : (x : A) -> Id x x
+    refl : (a : A) -> Id a a
+
+-- how to use this and also be able to use (refl' a) as expression?
+-- data Id {l : Level} {A : Set l} (a : A) : A -> Set l where
+--     instance refl : Id a a
+    
 
 infix 6 _＝_
 _＝_ : {l : Level} {A : Set l} -> A → A → Set l
