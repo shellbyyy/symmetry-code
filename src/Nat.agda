@@ -1,5 +1,5 @@
 module Nat where
 
-open import Nat.Base
-open import Nat.Operators
+open import Nat.Base public
+open import Nat.Operators public
 
