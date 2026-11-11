@@ -8,6 +8,9 @@ open import Agda.Primitive
 data Id {l : Level} {A : Set l} : A -> A -> Set l where
     refl : (x : A) -> Id x x
 
+infix 6 _＝_
+_＝_ : {l : Level} {A : Set l} -> A → A → Set l
+(a ＝ b) = Id a b
 
 variable l ll : Level
 variable A : Set l
