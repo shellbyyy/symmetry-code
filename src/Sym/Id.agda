@@ -64,3 +64,39 @@ module _
     e-6 : (p : a ＝ b) -> ((sym (sym p)) ＝ p)
     e-6 (refl a) = refl (refl a)
 
+-- exercise 2.5.5
+module _exercise
+    {l l' : Level}
+    {X : Set l}
+    {T : X -> Set l'} 
+    {a b c : X}
+  where
+    -- stolen from https://agda.github.io/agda-stdlib/v2.1/Function.Base.html#1136
+    _∘'_ : ∀ {la lb lc : Level} {A : Set la} {B : A → Set lb} {C : {x : A} → B x → Set lc} →
+          (∀ {x} (y : B x) → C y) → (g : (x : A) → B x) →
+          ((x : A) → C (g x))
+    f ∘' g = λ x → f (g x)
+
+    -- FIXME: how to do this without the x (equal of functions?)
+    it : (e : a ＝ b) -> (e' : b ＝ c) -> ((trp T (e' ∘ e)) ＝ ((trp T e' ) ∘' (trp T e)))
+    it (refl a) (refl a) = refl (id)
+
+
+-- exercise 2.5.6
+module _exercise'
+    {l l' : Level}
+    {X : Set l}
+    {Y : Set l'}
+    {a b c : X}
+  where
+    -- TODO: how to make const type family easier?
+    Y' : X -> Set l'
+    Y' _ = Y
+
+    it : (p : a ＝ b) -> ((trp Y' p) ＝(id' Y))
+    it (refl a) = refl (id' Y)
+
+
+
+
+    
