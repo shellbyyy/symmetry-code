@@ -4,13 +4,14 @@ open import Sym.Id
 
 open import Agda.Primitive
 
+-- definition 2.6.1
 module _ 
     {l l' : Level}
     (X : Set l)
     (Y : Set l')
   where
 
-  ap : {x x' : X} (f : X -> Y) -> (Id x x') -> (Id (f x) (f x'))
+  ap : {x x' : X} (f : X -> Y) -> (x x') -> (Id (f x) (f x'))
   ap f (refl x) = refl (f x)
 
 module _

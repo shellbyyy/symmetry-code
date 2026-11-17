@@ -54,12 +54,12 @@ module _
     e-3 : (p : a ＝ b) -> (q : b ＝ c) -> (r : c ＝ d) -> ((r ∘ (q ∘ p)) ＝ ((r ∘ q) ∘ p))
     e-3 (refl a) (refl a) (refl a) = refl (refl a)
 
-    -- NOTE: sym p is "invisible goal" ???
+    -- FIXME: sym p is "invisible goal" ???
     e-4 : (p : a ＝ b) -> (((sym p) ∘ p) ＝ (refl a))
     e-4 (refl a) = refl (refl a)
 
     e-5 : (p : a ＝ b) -> ((p ∘ (sym p)) ＝ (refl b))
-    e-5 (refl a) = refl (refl a)
+    e-5 (refl b) = refl (refl b)
 
     e-6 : (p : a ＝ b) -> ((sym (sym p)) ＝ p)
     e-6 (refl a) = refl (refl a)
@@ -77,9 +77,8 @@ module _exercise
           ((x : A) → C (g x))
     f ∘' g = λ x → f (g x)
 
-    -- FIXME: how to do this without the x (equal of functions?)
     it : (e : a ＝ b) -> (e' : b ＝ c) -> ((trp T (e' ∘ e)) ＝ ((trp T e' ) ∘' (trp T e)))
-    it (refl a) (refl a) = refl (id)
+    it (refl a) (refl a) = refl (id' (T a))
 
 
 -- exercise 2.5.6
