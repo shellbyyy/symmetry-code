@@ -1,7 +1,7 @@
 module Sym.Id where
 
-open import Sym.Nat
-open import Sym.Op using (id)
+open import Sym.Nat using (Nat; zero; suc; one)
+open import Sym.Op using (id; id')
 
 open import Agda.Primitive
 
@@ -24,13 +24,17 @@ module _
 module _ 
     {l : Level}
     {A : Set l}
-    (a b c : A)
+    {a b c : A}
   where
     sym : (Id a b) -> (Id b a)
     sym (refl a) = refl a
 
     trans : (Id a b) -> (Id b c) -> (Id a c)
     trans (refl a) p = p
+    -- trans (refl a) (refl a) = (refl a)
+
+    _∘_ : (Id b c) -> (Id a b) -> (Id a c)
+    _∘_ y x = trans x y
 
     trp : {l' : Level} (T : A -> Set l') -> (Id a b) -> (T a) -> (T b)
     trp _ (refl a) = id
