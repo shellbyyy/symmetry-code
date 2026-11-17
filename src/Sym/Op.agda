@@ -9,9 +9,16 @@ module _
     {X : Set l}
   where
 
-  iter : Nat -> (X -> X) -> (X -> X)
-  iter Nat.zero _ x = x
-  iter (Nat.suc n) f x = f ((iter n f) x)
+    iter : Nat -> (X -> X) -> (X -> X)
+    iter Nat.zero _ x = x
+    iter (Nat.suc n) f x = f ((iter n f) x)
 
-  id : X -> X
-  id x = x
+    -- TODO: make this function that accepts argument X
+    id : X -> X
+    id x = x
+
+module _
+    {l : Level}
+  where
+    id' : (X : Set l) -> (X -> X)
+    id' X = id
