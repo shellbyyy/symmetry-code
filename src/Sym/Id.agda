@@ -38,3 +38,29 @@ module _
 
     trp : {l' : Level} (T : A -> Set l') -> (Id a b) -> (T a) -> (T b)
     trp _ (refl a) = id
+
+-- exercise 2.5.3
+module _
+    {l : Level}
+    {A : Set l}
+    {a b c d : A}
+  where
+    e-1 : (p : a ＝ b) -> (((refl b) ∘ p) ＝ p)
+    e-1 (refl b) = refl (refl b)
+
+    e-2 : (p : a ＝ b) -> ((p ∘ (refl a)) ＝ p)
+    e-2 (refl a) = refl (refl a)
+
+    e-3 : (p : a ＝ b) -> (q : b ＝ c) -> (r : c ＝ d) -> ((r ∘ (q ∘ p)) ＝ ((r ∘ q) ∘ p))
+    e-3 (refl a) (refl a) (refl a) = refl (refl a)
+
+    -- NOTE: sym p is "invisible goal" ???
+    e-4 : (p : a ＝ b) -> (((sym p) ∘ p) ＝ (refl a))
+    e-4 (refl a) = refl (refl a)
+
+    e-5 : (p : a ＝ b) -> ((p ∘ (sym p)) ＝ (refl b))
+    e-5 (refl a) = refl (refl a)
+
+    e-6 : (p : a ＝ b) -> ((sym (sym p)) ＝ p)
+    e-6 (refl a) = refl (refl a)
+
