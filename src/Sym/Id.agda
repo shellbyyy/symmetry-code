@@ -24,19 +24,20 @@ module _
 module _ 
     {l : Level}
     {A : Set l}
-    {a b c : A}
   where
-    sym : (Id a b) -> (Id b a)
+    -- FIXME: why is there a unresolved meta variable error if setting abc in module above????
+    -- ooh because some like c : A are not used sometimes? But that would be a very stupid error??!
+    sym : {a b : A} -> (Id a b) -> (Id b a)
     sym (refl a) = refl a
 
-    trans : (Id a b) -> (Id b c) -> (Id a c)
+    trans : {a b c : A} -> (Id a b) -> (Id b c) -> (Id a c)
     trans (refl a) p = p
     -- trans (refl a) (refl a) = (refl a)
 
-    _∘_ : (Id b c) -> (Id a b) -> (Id a c)
+    _∘_ : {a b c : A} -> (Id b c) -> (Id a b) -> (Id a c)
     _∘_ y x = trans x y
 
-    trp : {l' : Level} (T : A -> Set l') -> (Id a b) -> (T a) -> (T b)
+    trp : {l' : Level} -> {a b : A} -> (T : A -> Set l') -> (Id a b) -> (T a) -> (T b)
     trp _ (refl a) = id
 
 -- exercise 2.5.3
@@ -54,7 +55,6 @@ module _
     e-3 : (p : a ＝ b) -> (q : b ＝ c) -> (r : c ＝ d) -> ((r ∘ (q ∘ p)) ＝ ((r ∘ q) ∘ p))
     e-3 (refl a) (refl a) (refl a) = refl (refl a)
 
-    -- FIXME: sym p is "invisible goal" ???
     e-4 : (p : a ＝ b) -> (((sym p) ∘ p) ＝ (refl a))
     e-4 (refl a) = refl (refl a)
 
