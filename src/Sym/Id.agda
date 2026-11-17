@@ -13,7 +13,10 @@ module _
     data Id : A -> A -> Set l where
         refl : (a : A) -> Id a a
 
-    -- how to use this and also be able to use (refl' a) as expression?
+    refl' : {a : A} -> Id a a
+    refl' {a} = refl a
+
+    -- TODO: maybe swap refl and refl' because it is defined in stdlib and would be the same as id
     -- data Id {l : Level} {A : Set l} (a : A) : A -> Set l where
     --     instance refl : Id a a
 
