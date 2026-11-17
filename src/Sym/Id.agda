@@ -1,7 +1,7 @@
-module Id where
+module Sym.Id where
 
-open import Nat
-open import Op using (id)
+open import Sym.Nat
+open import Sym.Op using (id)
 
 open import Agda.Primitive
 

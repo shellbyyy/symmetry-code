@@ -1,4 +1,4 @@
-module Nat.Base where
+module Sym.Nat.Base where
 
 data Nat : Set where
     zero : Nat

@@ -1,6 +1,6 @@
-module Op where
+module Sym.Op where
 
-open import Nat.Base using (Nat)
+open import Sym.Nat.Base using (Nat)
 
 open import Agda.Primitive
 

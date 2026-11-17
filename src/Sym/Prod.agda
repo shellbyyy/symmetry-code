@@ -1,6 +1,6 @@
-module Prod where
+module Sym.Prod where
 
-open import Id
+open import Sym.Id
 
 open import Agda.Primitive
 

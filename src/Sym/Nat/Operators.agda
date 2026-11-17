@@ -1,7 +1,7 @@
-module Nat.Operators where
+module Sym.Nat.Operators where
 
-open import Nat.Base using (Nat; zero; one; suc)
-open import Op using (iter)
+open import Sym.Nat.Base using (Nat; zero; one; suc)
+open import Sym.Op using (iter)
 
 _+_ : Nat -> Nat -> Nat
 _+_ a zero = a
